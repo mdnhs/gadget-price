@@ -105,6 +105,24 @@ function FilterSidebar({
 
   const FilterForm = (
     <div className="space-y-6">
+      {/* Search Bar */}
+      <div className="relative group">
+        <Label className="text-sm font-semibold text-foreground">Search</Label>
+        <div className="relative mt-1">
+          <Search
+            size={16}
+            className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground group-focus-within:text-primary"
+          />
+          <Input
+            type="text"
+            placeholder="Search products..."
+            value={filters.search}
+            onChange={handleSearchChange}
+            className="pl-9 h-9 text-sm"
+          />
+        </div>
+      </div>
+
       {/* Category */}
       <div className="space-y-2">
         <Label className="text-sm font-semibold text-foreground">
@@ -264,7 +282,6 @@ function FilterSidebar({
     <>
       {/* Mobile Toolbar */}
       <div className="md:hidden flex items-center gap-3 w-full">
-        {/* Search Input (Left Side) */}
         <div className="relative flex-1 group">
           <Search
             size={16}
@@ -279,7 +296,6 @@ function FilterSidebar({
           />
         </div>
 
-        {/* Filter Drawer Trigger (Right Side) */}
         <Drawer open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
           <DrawerTrigger asChild>
             <Button
